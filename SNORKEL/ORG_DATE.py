@@ -89,7 +89,7 @@ def lf_born(x, born):
     return BORNIN if len(born.intersection(set(x.between_tokens))) > 0 else NEGATIVE
 
 # Emotional relation
-deliberated = {"deliberated", "deliberate"}
+deliberated = {"deliberated", "deliberate", "studied", "considered"}
 @labeling_function(resources=dict(deliberated=deliberated), pre=[get_text_between])
 def lf_deliberated(x, deliberated):
     return DELIBERATED if len(deliberated.intersection(set(x.between_tokens))) > 0 else NEGATIVE
