@@ -81,8 +81,8 @@ COMPOSED = 1
 MORE = 2
 
 # Labeling Functions
-# Capture lawyer relation
-composed = {"composed"}
+# Capture constituent relation
+composed = {"composed", "constituted", "comprised"}
 @labeling_function(resources=dict(composed=composed), pre=[get_text_between])
 def lf_composed(x, composed):
     return COMPOSED if len(composed.intersection(set(x.between_tokens))) > 0 else NEGATIVE
