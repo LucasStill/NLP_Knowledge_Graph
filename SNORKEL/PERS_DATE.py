@@ -38,7 +38,7 @@ def get_text_right(cand):
 nlp = spacy.load("en_core_web_sm")
 
 # Create a dataset
-sentences = ["Joe is born in 1950", "Joe got sentenced at 7th of November 2021", "The is an example"]
+sentences = ["Joe was born in 1950", "Joe got sentenced on 7th of November 2021", "David was born on 8th October 1987", "Magabe was penalized in 1999" "The is an example"]
 
 # For every sentence
 tokens_df = []
@@ -80,14 +80,14 @@ BORNIN = 1
 SENTENCED = 2
 
 # Labeling Functions
-# Capture lawyer relation
-born = {"born", "birthdate"}
+# Capture birth relation
+born = {"born", "birthdate", "birth-date"}
 @labeling_function(resources=dict(born=born), pre=[get_text_between])
 def lf_born(x, born):
     return BORNIN if len(born.intersection(set(x.between_tokens))) > 0 else NEGATIVE
 
-# Emotional relation
-sentenced = {"sentenced", "judgement", "convict", "convicted"}
+# Sentence/conviction relation
+sentenced = {"sentenced", "judgement", "convict", "convicted", "condemned", "punished", "penalized"}
 @labeling_function(resources=dict(sentenced=sentenced), pre=[get_text_between])
 def lf_sentenced(x, sentenced):
     return SENTENCED if len(sentenced.intersection(set(x.between_tokens))) > 0 else NEGATIVE
