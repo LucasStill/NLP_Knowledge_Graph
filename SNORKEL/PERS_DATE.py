@@ -38,7 +38,7 @@ def get_text_right(cand):
 nlp = spacy.load("en_core_web_sm")
 
 # Create a dataset
-sentences = ["Joe was born in 1950", "Joe got sentenced on 7th of November 2021", "David was born on 8th October 1987", "Magabe was penalized in 1999" "The is an example"]
+sentences = ["Joe was born in 1950", "Joe got sentenced on 7th of November 2021", "David was born on 8th October 1987", "Magabe was penalized in 1999", "The is an example"]
 
 # For every sentence
 tokens_df = []
