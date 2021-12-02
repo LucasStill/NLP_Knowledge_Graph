@@ -17,6 +17,7 @@ def pad_or_truncate(l, max_length=128):
 # LOAD DATA
 # Load created train set
 df = pd.read_pickle("Relations.pkl")
+
 df = df[df.Relation != 'ORIGINATES']
 
 # Create padded / truncated input
@@ -71,7 +72,7 @@ probs_test = model.predict(X_test)
 Y_Pred = probs_to_preds(probs_test)
 
 print("Test Accuracy: {}".format(accuracy_score([np.where(r == 1)[0][0] for r in Y_test], Y_Pred)))
-print("Test F1-score: {}".format(f1_score([np.where(r == 1)[0][0] for r in Y_test], Y_Pred)))
+print("Test F1-score: {}".format(f1_score([np.where(r == 1)[0][0] for r in Y_test], Y_Pred, average='weighted')))
 
 # PLOT RESULTS
 plt.plot(history.history['accuracy'])
