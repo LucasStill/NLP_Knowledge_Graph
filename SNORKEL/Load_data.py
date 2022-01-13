@@ -1,33 +1,34 @@
 import pandas as pd
 from itertools import chain
+import ast
 
 
-def get_tok2idx(data):
-    vocab = list(set(data['Word'].to_list()))
+def get_tok2idx(Words):
+    vocab = list(set(Words))
 
     tok2idx = {tok: idx for idx, tok in enumerate(vocab)}
 
     return tok2idx
 
+def create_token_list(words, token2idx):
+    return [token2idx[word] for word in words]
+
 
 def load_data():
     # Load data
-    df = pd.read_csv(r'C:\Users\JJ199\Downloads\kaggle_at_home.csv', nrows=50)
+    df = pd.read_csv(r'C:\Users\JJ199\Downloads\file_regex001.csv', nrows=50)
+
+    # Set correct type for list
+    df['Word'] = df['Word'].apply(ast.literal_eval)
 
     # Create index for all words (Bag of Words)
-    token2idx = get_tok2idx(df)
+    token2idx = get_tok2idx(df['Word'].apply(pd.Series).stack().reset_index(drop = True))
 
     # Add indices
-    df['Word_idx'] = df['Word'].map(token2idx)
-
-    # Fill na
-    df['Sentence #'] = df['Sentence #'].fillna(method='ffill', axis=0)
+    df['Word_idx'] = df['Word'].map(lambda x: create_token_list(x, token2idx))
 
     # Groupby and collect columns
-    df = df.groupby(['Sentence #'],
-                    as_index=False)['Word', 'Word_idx', 'Tag'].agg(lambda x: list(x))
-
-    print(df.head().iloc[0])
+    df = df[['Word', 'Word_idx', 'Tag']]
 
     return df
 
