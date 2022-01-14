@@ -16,7 +16,7 @@ def create_token_list(words, token2idx):
 
 def load_data():
     # Load data
-    df = pd.read_csv(r'C:\Users\JJ199\Downloads\file_regex001.csv', nrows=50)
+    df = pd.read_csv(r"C:\Users\JJ199\Downloads\all_annotated_regex.csv")
 
     # Set correct type for list
     df['Word'] = df['Word'].apply(ast.literal_eval)

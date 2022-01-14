@@ -34,4 +34,4 @@ for i, fn in enumerate(relation_functions):
 df['Relation'] = label
 
 # Save
-df.to_csv("Relations3.csv", sep="|")
+df.to_csv("annotated_all.csv", sep="|")
