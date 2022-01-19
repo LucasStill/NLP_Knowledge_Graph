@@ -10,4 +10,4 @@ After the code has been scraped, the code need to be annotated for NER. To annot
 Once the NE are labelled correctly, use ```label_relations.py``` to label the relations accordingly. The labels / relations used and designed (for SNORKEL) are determined using ```ClausIE_notebook.ipynb```, which is a dependency parser, thus is able to extract all relations.
 
 ## Model
-The dataset created in ```label_relations.py``` can be used in ```xxx``` to train the Bi-LSTM for NER and ```train_re_model.py``` to train the Bi-LSTM for RE. Finally, ```MRP1_Two_headed_BERT.ipynb``` could be used to train the THBM. 
+The dataset created in ```label_relations.py``` can be used in ```NER_LSTM``` to train the Bi-LSTM for NER and ```train_re_model.py``` to train the Bi-LSTM for RE. Finally, ```MRP1_Two_headed_BERT.ipynb``` could be used to train the THBM. 
