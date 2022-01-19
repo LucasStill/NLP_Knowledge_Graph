@@ -5,7 +5,7 @@ In this project, Subject Verb Object triples (SVOs) will be extracted from legal
 ## Data
 For this project the HUDOC dataset has been used. Since this dataset only contains raw data, we had to label the dataset as well in this project. First of all, the data had to be scraped. This code can be found in ```Scraper.py```. 
 
-After the code has been scraped, the code need to be annotated for NER. To annotate this use ```MRP1_Hudoc_NER_annotation.ipynb``` for the regular expressions and merge these with the annotations from the pretrained model in ```xxx```. 
+After the code has been scraped, the code need to be annotated for NER. To annotate this use ```MRP1_Hudoc_NER_annotation.ipynb``` for the regular expressions and merge these with the annotations from the pretrained model in the ```annotator.py``` files. 
 
 Once the NE are labelled correctly, use ```label_relations.py``` to label the relations accordingly. The labels / relations used and designed (for SNORKEL) are determined using ```ClausIE_notebook.ipynb```, which is a dependency parser, thus is able to extract all relations.
 
